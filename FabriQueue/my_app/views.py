@@ -5,8 +5,8 @@ from .models import PrintJob, Material, Printer
 from django.contrib.auth.views import LoginView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+
 
 # Home page
 def home(request):
@@ -15,16 +15,6 @@ def home(request):
 def about(request):
     return render(request, 'about.html')
 
-@login_required
-def printjob_index(request):
-    # Show only the jobs of the logged-in user
-    printjobs = PrintJob.objects.filter(user=request.user)
-    return render(request, 'printjobs/index.html', { 'printjobs': printjobs })
-
-@login_required
-def printjob_detail(request, printjob_id):
-    printjob = PrintJob.objects.get(id=printjob_id)
-    return render(request, 'printjobs/detail.html', { 'printjob': printjob })
 
 def signup(request):
     error_message = ''
@@ -40,61 +30,104 @@ def signup(request):
     context = {'form': form, 'error_message': error_message}
     return render(request, 'signup.html', context)
 
+
 # Home with login view
 class Home(LoginView):
     template_name = 'home.html'
 
+
 # --- PrintJob Views ---
+class PrintJobList(ListView):
+    model = PrintJob
+    template_name = "printjobs/printjob_list.html"   # ✅ fixed underscore
+    context_object_name = "printjobs"
+
+
+class PrintJobDetail(DetailView):
+    model = PrintJob
+    template_name = "printjobs/printjob_detail.html"
+    context_object_name = "printjob"
+
+
 class PrintJobCreate(LoginRequiredMixin, CreateView):
     model = PrintJob
-    fields = ['name', 'stl_file', 'material', 'weight_grams', 'estimated_time']
+    fields = ['name', 'stl_file', 'material', 'weight_grams', 'estimated_time', 'status', 'printers']
+    template_name = "printjobs/printjob_form.html"
 
     def form_valid(self, form):
-        form.instance.user = self.request.user  # assign current user
+        form.instance.user = self.request.user
         return super().form_valid(form)
+
 
 class PrintJobUpdate(UpdateView):
     model = PrintJob
     fields = ['name', 'material', 'weight_grams', 'estimated_time', 'status']
+    template_name = "printjobs/printjob_form.html"
+
 
 class PrintJobDelete(DeleteView):
     model = PrintJob
+    template_name = "printjobs/printjob_confirm_delete.html"
     success_url = '/printjobs/'
 
-# --- Material Views ---
-class MaterialCreate(CreateView):
-    model = Material
-    fields = '__all__'
 
+# --- Material Views ---
 class MaterialList(ListView):
     model = Material
+    template_name = "materials/material_list.html"
+    context_object_name = "materials"
+
 
 class MaterialDetail(DetailView):
     model = Material
+    template_name = "materials/material_detail.html"
+    context_object_name = "material"
+
+
+class MaterialCreate(CreateView):
+    model = Material
+    fields = ['name', 'color', 'cost_per_gram']
+    template_name = "materials/material_form.html"
+
 
 class MaterialUpdate(UpdateView):
     model = Material
     fields = ['name', 'color', 'cost_per_gram']
+    template_name = "materials/material_form.html"
+
 
 class MaterialDelete(DeleteView):
     model = Material
+    template_name = "materials/material_confirm_delete.html"
     success_url = '/materials/'
 
-# --- Printer Views ---
-class PrinterCreate(CreateView):
-    model = Printer
-    fields = '__all__'
 
+# --- Printer Views ---
 class PrinterList(ListView):
     model = Printer
+    template_name = "printers/printer_list.html"
+    context_object_name = "printers"
+
 
 class PrinterDetail(DetailView):
     model = Printer
+    template_name = "printers/printer_detail.html"
+    context_object_name = "printer"
+
+
+class PrinterCreate(CreateView):
+    model = Printer
+    fields = ['name', 'location', 'status']
+    template_name = "printers/printer_form.html"
+
 
 class PrinterUpdate(UpdateView):
     model = Printer
     fields = ['name', 'location', 'status']
+    template_name = "printers/printer_form.html"
+
 
 class PrinterDelete(DeleteView):
     model = Printer
+    template_name = "printers/printer_confirm_delete.html"
     success_url = '/printers/'

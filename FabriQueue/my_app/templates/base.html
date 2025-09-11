@@ -23,13 +23,13 @@
         <ul>
           {% if user.is_authenticated %}
             <li>
-              <a href="{% url 'printjob-index' %}">All Print Jobs</a>
+              <a href="{% url 'printjob-list' %}">All Print Jobs</a>
             </li>
             <li>
-              <a href="{% url 'material-index' %}">Materials</a>
+              <a href="{% url 'material-list' %}">Materials</a>
             </li>
             <li>
-              <a href="{% url 'printer-index' %}">Printers</a>
+              <a href="{% url 'printer-list' %}">Printers</a>
             </li>
             <li>
               <a href="{% url 'printjob-create' %}">Add a Print Job</a>
