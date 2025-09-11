@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}History: {{ object.print_job.name }}{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/history/history_detail.css' %}">
+{% endblock %}
+
+{% block content %}
+  <div class="history-detail">
+    <h1>History for {{ object.print_job.name }}</h1>
+
+    <p><strong>Printer:</strong> {{ object.printer.name|default:"N/A" }}</p>
+    <p><strong>Started At:</strong> {{ object.started_at }}</p>
+    <p><strong>Finished At:</strong> {{ object.finished_at|default:"In Progress" }}</p>
+    <p><strong>Result:</strong> 
+      {% if object.success %}
+        ✅ Successful
+      {% else %}
+        ❌ Failed
+      {% endif %}
+    </p>
+
+    <div class="actions">
+      <a href="{% url 'history-list' %}" class="btn secondary">Back to History</a>
+      <a href="{% url 'printjob-detail' object.print_job.pk %}" class="btn">View Print Job</a>
+    </div>
+  </div>
+{% endblock %}

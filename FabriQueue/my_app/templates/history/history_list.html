@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Print Job History{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/history/history_list.css' %}">
+{% endblock %}
+
+{% block content %}
+  <section class="list-header">
+    <h2>📜 Print History</h2>
+  </section>
+
+  <section class="history-grid">
+    {% for entry in object_list %}
+      <div class="history-card">
+        <h3>
+          <a href="{% url 'history-detail' entry.pk %}">
+            {{ entry.print_job.name }}
+          </a>
+        </h3>
+        <p><strong>Printer:</strong> {{ entry.printer.name|default:"N/A" }}</p>
+        <p><strong>Started:</strong> {{ entry.started_at }}</p>
+        <p><strong>Finished:</strong> {{ entry.finished_at|default:"In Progress" }}</p>
+        <p>
+          <strong>Status:</strong>
+          {% if entry.success %}
+            ✅ Success
+          {% else %}
+            ❌ Failed
+          {% endif %}
+        </p>
+      </div>
+    {% empty %}
+      <p>No print history available yet.</p>
+    {% endfor %}
+  </section>
+{% endblock %}
