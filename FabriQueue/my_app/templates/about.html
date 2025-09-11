@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+  <link rel="stylesheet" href="{% static 'css/about.css' %}" />
+{% endblock %}
+
+{% block content %}
+  <section class="about-container">
+    <h1>About FabriQueue 🖨️</h1>
+    <hr />
+
+    <p class="page-content">
+      FabriQueue is a Django-powered web app designed to streamline <strong>3D printing job management</strong>.  
+      Whether you’re a maker, engineer, or hobbyist, FabriQueue helps you keep track of print jobs, estimate material costs, monitor printers, and review print history — all in one place.
+    </p>
+
+    <h2>✨ What Makes FabriQueue Special?</h2>
+    <ul>
+      <li>Organize and prioritize your 3D print jobs with ease.</li>
+      <li>Track materials used (like PLA, ABS, PETG) and their costs per gram.</li>
+      <li>Assign jobs to specific printers and check their status in real time.</li>
+      <li>Maintain a detailed history of completed, failed, or in-progress prints.</li>
+      <li>Personal dashboard for every user to manage their own projects.</li>
+    </ul>
+
+    <h2>🚀 Why FabriQueue?</h2>
+    <p>
+      3D printing is fun, but managing multiple jobs can quickly become overwhelming.  
+      FabriQueue was built to bring structure and visibility into the printing workflow — so you can spend less time tracking, and more time <strong>creating</strong>.
+    </p>
+
+    <div class="about-visuals">
+      <img src="{% static 'images/3d-printer.svg' %}" alt="3D Printer" class="about-img"/>
+      <img src="{% static 'images/filament.svg' %}" alt="Filament Roll" class="about-img"/>
+    </div>
+  </section>
+{% endblock %}
