@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Print Job: {{ object.name }}{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/printjobs/printjob_detail.css' %}">
+{% endblock %}
+
+{% block content %}
+  <div class="printjob-details">
+    <h1>{{ object.name }}</h1>
+
+    <p><strong>Status:</strong> {{ object.get_status_display }}</p>
+    <p><strong>Material:</strong> {{ object.material }}</p>
+    <p><strong>Weight:</strong> {{ object.weight_grams }} g</p>
+    <p><strong>Estimated Print Time:</strong> {{ object.estimated_time }}</p>
+    <p><strong>Calculated Material Cost:</strong> ${{ object.material_cost|floatformat:2 }}</p>
+    <p><strong>Submitted By:</strong> {{ object.user.username }}</p>
+    <p><strong>Submitted On:</strong> {{ object.created_at|date:"M d, Y H:i" }}</p>
+
+    {% if object.stl_file %}
+      <p><strong>STL File:</strong> <a href="{{ object.stl_file.url }}" download>Download</a></p>
+    {% endif %}
+
+    {% if object.printers.exists %}
+      <h2>Assigned Printers</h2>
+      <ul>
+        {% for printer in object.printers.all %}
+          <li><a href="{% url 'printer-detail' printer.pk %}">{{ printer.name }}</a></li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    <div class="actions">
+      <a href="{% url 'printjob-update' object.pk %}" class="btn">Edit</a>
+      <a href="{% url 'printjob-confirm-delete' object.pk %}" class="btn danger">Delete</a>
+      <a href="{% url 'printjob-list' %}" class="btn secondary">Back</a>
+    </div>
+  </div>
+{% endblock %}
