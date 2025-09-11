@@ -122,7 +122,7 @@ STATIC_URL = 'static/'
 
 # Authentication redirects
 LOGIN_URL = 'home'
-LOGIN_REDIRECT_URL = 'printjob-index'
+LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 
 
