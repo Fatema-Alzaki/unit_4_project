@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Material: {{ object.name }}{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/materials/material_detail.css' %}">
+{% endblock %}
+
+{% block content %}
+  <div class="material-details">
+    <h1>{{ object.name }}</h1>
+
+    {% if object.color %}
+      <p><strong>Color:</strong> <span style="color: {{ object.color }}">{{ object.color }}</span></p>
+    {% endif %}
+    <p><strong>Cost per gram:</strong> ${{ object.cost_per_gram }}</p>
+
+    <div class="actions">
+      <a href="{% url 'material-update' object.pk %}" class="btn">Edit</a>
+      <a href="{% url 'material-confirm-delete' object.pk %}" class="btn danger">Delete</a>
+      <a href="{% url 'material-list' %}" class="btn secondary">Back</a>
+    </div>
+  </div>
+{% endblock %}

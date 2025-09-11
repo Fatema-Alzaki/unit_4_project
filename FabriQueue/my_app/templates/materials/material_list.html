@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}All Materials{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/materials/material_list.css' %}">
+{% endblock %}
+
+{% block content %}
+  <section class="list-header">
+    <h2>🧵 3D Printing Materials</h2>
+    <a href="{% url 'material-create' %}" class="btn add-btn">+ Add Material</a>
+  </section>
+
+  <section class="material-grid">
+    {% for material in object_list %}
+      <div class="material-card" style="border-color: {{ material.color|default:'#ccc' }}">
+        <div class="material-swatch" style="background-color: {{ material.color|default:'#eee' }}"></div>
+        <h3>
+          <a href="{% url 'material-detail' material.pk %}">{{ material.name }}</a>
+        </h3>
+        {% if material.color %}
+          <p><strong>Color:</strong> {{ material.color }}</p>
+        {% endif %}
+        <p><strong>Cost/gram:</strong> ${{ material.cost_per_gram }}</p>
+      </div>
+    {% empty %}
+      <p>No materials have been added yet.</p>
+    {% endfor %}
+  </section>
+{% endblock %}

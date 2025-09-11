@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{% if object %}Edit Material{% else %}Add Material{% endif %}{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/materials/material_form.css' %}">
+{% endblock %}
+
+{% block content %}
+  <div class="form-container">
+    <h2>{% if object %}Edit {{ object.name }}{% else %}Add a New Material{% endif %}</h2>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="btn save-btn">Save</button>
+      <a href="{% url 'material-list' %}" class="btn cancel-btn">Cancel</a>
+    </form>
+  </div>
+{% endblock %}
