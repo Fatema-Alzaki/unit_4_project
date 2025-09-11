@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}All Printers{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/printers/printer_list.css' %}">
+{% endblock %}
+
+{% block content %}
+  <section class="list-header">
+    <h2>🔧 Printers Available</h2>
+    <a href="{% url 'printer-create' %}" class="btn add-btn">+ Add Printer</a>
+  </section>
+
+  <section class="printer-grid">
+    {% for printer in object_list %}
+      <div class="printer-card">
+        <h3><a href="{% url 'printer-detail' printer.pk %}">{{ printer.name }}</a></h3>
+        <p><strong>Status:</strong> {{ printer.status }}</p>
+        {% if printer.location %}
+          <p><strong>Location:</strong> {{ printer.location }}</p>
+        {% endif %}
+      </div>
+    {% empty %}
+      <p>No printers registered yet.</p>
+    {% endfor %}
+  </section>
+{% endblock %}

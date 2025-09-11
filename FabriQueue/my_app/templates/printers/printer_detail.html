@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Printer: {{ object.name }}{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/printers/printer_detail.css' %}">
+{% endblock %}
+
+{% block content %}
+  <div class="printer-details">
+    <h1>{{ object.name }}</h1>
+    <p><strong>Status:</strong> {{ object.status }}</p>
+    {% if object.location %}
+      <p><strong>Location:</strong> {{ object.location }}</p>
+    {% endif %}
+
+    <h2>Specifications</h2>
+    <ul>
+      <li><strong>Technology:</strong> FDM / FFF</li>
+      <li><strong>Build Volume:</strong> 200 × 200 × 200 mm  <!-- You can store this in your model too if you want dynamic --></li>
+      <li><strong>Nozzle Size:</strong> 0.4 mm</li>
+      <li><strong>Layer Resolution:</strong> 0.1-0.3 mm</li>
+      <li><strong>Filament Diameter:</strong> 1.75 mm</li>
+      <li><strong>Speed:</strong> Up to 100 mm/s typical</li>
+      <li><strong>Heated Bed:</strong> Yes</li>
+      <li><strong>Auto Bed Leveling:</strong> Optional / Yes</li>
+    </ul>
+
+    <div class="actions">
+      <a href="{% url 'printer-update' object.pk %}" class="btn">Edit</a>
+      <a href="{% url 'printer-confirm-delete' object.pk %}" class="btn danger">Delete</a>
+      <a href="{% url 'printer-list' %}" class="btn secondary">Back</a>
+    </div>
+  </div>
+{% endblock %}
