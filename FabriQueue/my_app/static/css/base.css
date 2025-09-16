@@ -1,0 +1,149 @@
+/* 🌌 Global Futuristic Neon Theme (Base Layout) */
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Background */
+body {
+  background: linear-gradient(135deg, #000 0%, #0a0a0a 100%);
+  color: #d0ffd0;
+  font-family: "Orbitron", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background: rgba(0, 0, 0, 0.85);
+  border-bottom: 2px solid #00ffaa;
+  box-shadow: 0 0 20px #00ffaa44;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  animation: fadeInDown 1s ease-out;
+}
+
+/* Logo */
+.header-logo-container img {
+  height: 50px;
+  filter: drop-shadow(0 0 12px #00ffaa);
+  transition: transform 0.3s ease;
+}
+
+.header-logo-container img:hover {
+  transform: scale(1.08) rotate(-2deg);
+}
+
+/* Navigation */
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+nav ul li {
+  position: relative;
+}
+
+nav ul a,
+nav ul button {
+  color: #00ffaa;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+  text-transform: uppercase;
+  transition: 0.3s;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem 0.8rem;
+}
+
+nav ul a:hover,
+nav ul button:hover {
+  color: #000;
+  background: #00ffaa;
+  border-radius: 6px;
+  box-shadow: 0 0 15px #00ffaa, 0 0 25px #00ffcc;
+}
+
+/* Neon underline effect */
+nav ul a::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: #00ffaa;
+  transition: width 0.3s ease;
+}
+
+nav ul a:hover::after {
+  width: 100%;
+}
+
+/* Main content */
+main {
+  flex: 1;
+  padding: 2rem;
+  animation: fadeIn 1.2s ease-in-out;
+}
+
+/* Buttons (general) */
+.btn,
+button {
+  background: linear-gradient(90deg, #00ff88, #00ffaa);
+  color: #000;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  padding: 0.7rem 1.2rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px #00ffaa, 0 0 20px #00ff88;
+}
+
+.btn:hover,
+button:hover {
+  background: linear-gradient(90deg, #00ffaa, #00ffcc);
+  box-shadow: 0 0 15px #00ffaa, 0 0 30px #00ffcc;
+  transform: scale(1.05);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #111;
+}
+::-webkit-scrollbar-thumb {
+  background: #00ffaa;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #00ffaa88;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #00ffcc;
+}

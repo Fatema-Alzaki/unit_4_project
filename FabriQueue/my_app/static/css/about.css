@@ -1,0 +1,94 @@
+/* 🌌 About Page – Futuristic Neon Theme */
+
+.about-container {
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background: rgba(0, 0, 0, 0.85);
+  border: 2px solid #00ffaa55;
+  border-radius: 15px;
+  box-shadow: 0 0 20px #00ffaa33, 0 0 40px #00ffaa11;
+  animation: fadeIn 1.2s ease-in-out;
+}
+
+/* Heading */
+.about-container h1 {
+  font-size: 2.5rem;
+  text-align: center;
+  color: #00ffaa;
+  text-shadow: 0 0 12px #00ffaa, 0 0 24px #00ffcc;
+  margin-bottom: 1rem;
+}
+
+.about-container h2 {
+  font-size: 1.6rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: #aaffee;
+  text-shadow: 0 0 8px #00ffaa66;
+}
+
+/* Divider */
+.about-container hr {
+  border: none;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00ffaa, transparent);
+  margin: 1.5rem auto;
+}
+
+/* Paragraphs */
+.page-content, 
+.about-container p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #d0ffd0;
+  text-align: justify;
+}
+
+/* List */
+.about-container ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.about-container ul li {
+  margin: 0.7rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+  font-size: 1.05rem;
+  color: #ccffcc;
+}
+
+.about-container ul li::before {
+  content: "⚡";
+  position: absolute;
+  left: 0;
+  color: #00ffaa;
+  text-shadow: 0 0 8px #00ffaa, 0 0 16px #00ffcc;
+}
+
+/* Visuals */
+.about-visuals {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.about-img {
+  width: 150px;
+  filter: drop-shadow(0 0 15px #00ffaa);
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.about-img:hover {
+  transform: scale(1.15) rotate(5deg);
+  filter: drop-shadow(0 0 25px #00ffaa) brightness(1.3);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
