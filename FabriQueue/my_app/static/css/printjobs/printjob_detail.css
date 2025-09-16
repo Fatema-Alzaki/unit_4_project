@@ -1,0 +1,132 @@
+/* 🌌 FabriQueue Futuristic Theme – Print Job Detail */
+
+body {
+  background: linear-gradient(135deg, #000 20%, #0a0a0a 80%);
+  color: #d1fbe4;
+  font-family: "Orbitron", sans-serif;
+  padding: 2rem;
+}
+
+.printjob-details {
+  background: #0d0d0d;
+  border: 2px solid #00ffaa55;
+  border-radius: 12px;
+  padding: 2rem;
+  max-width: 700px;
+  margin: 2rem auto;
+  box-shadow: 0 0 20px #00ffaa22;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+.printjob-details h1 {
+  font-size: 2rem;
+  color: #00ffaa;
+  text-shadow: 0 0 8px #00ffaa, 0 0 16px #008844;
+  margin-bottom: 1.2rem;
+  text-align: center;
+}
+
+.printjob-details p {
+  font-size: 1.1rem;
+  margin: 0.5rem 0;
+  line-height: 1.6;
+  color: #c0f5d8;
+}
+
+.printjob-details strong {
+  color: #00ffaa;
+  text-shadow: 0 0 6px #00ffaa88;
+}
+
+/* Assigned Printers */
+.printjob-details h2 {
+  margin-top: 2rem;
+  font-size: 1.4rem;
+  color: #00ffaa;
+  border-bottom: 1px solid #00ffaa44;
+  padding-bottom: 0.3rem;
+}
+
+.printjob-details ul {
+  list-style: none;
+  padding: 0;
+}
+
+.printjob-details li {
+  background: #111;
+  margin: 0.5rem 0;
+  padding: 0.7rem;
+  border-radius: 6px;
+  border: 1px solid #00ffaa33;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.printjob-details li:hover {
+  transform: translateX(6px);
+  box-shadow: 0 0 12px #00ffaa55;
+}
+
+.printjob-details li a {
+  color: #00ffaa;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Buttons */
+.actions {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.actions .btn {
+  display: inline-block;
+  margin: 0.5rem;
+  padding: 0.6rem 1.4rem;
+  border-radius: 6px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.actions .btn {
+  background: #0f0f0f;
+  color: #00ffaa;
+  border: 1px solid #00ffaa88;
+  text-shadow: 0 0 6px #00ffaa99;
+}
+
+.actions .btn:hover {
+  background: #00ffaa22;
+  box-shadow: 0 0 15px #00ffaa66;
+}
+
+.actions .btn.danger {
+  background: #220000;
+  border-color: #ff4444;
+  color: #ff6666;
+  text-shadow: 0 0 6px #ff4444;
+}
+
+.actions .btn.danger:hover {
+  background: #440000;
+  box-shadow: 0 0 15px #ff3333aa;
+}
+
+.actions .btn.secondary {
+  background: #111;
+  border: 1px solid #888;
+  color: #bbb;
+}
+
+.actions .btn.secondary:hover {
+  background: #222;
+  box-shadow: 0 0 12px #00ffaa44;
+  color: #00ffaa;
+}
+
+/* ✨ Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
