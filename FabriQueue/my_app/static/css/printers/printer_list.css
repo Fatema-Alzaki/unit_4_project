@@ -1,0 +1,85 @@
+/* 🌌 FabriQueue Futuristic Theme – Printer List */
+
+body {
+  background: linear-gradient(135deg, #000 30%, #0a0f0a 100%);
+  color: #e6fdf2;
+  font-family: "Orbitron", sans-serif;
+  padding: 2rem;
+}
+
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.list-header h2 {
+  font-size: 2rem;
+  color: #00ffaa;
+  text-shadow: 0 0 10px #00ffaa, 0 0 20px #007755;
+}
+
+.add-btn {
+  background: #0a0;
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px #00ffaa44;
+}
+
+.add-btn:hover {
+  background: #00ffaa;
+  color: #000;
+  box-shadow: 0 0 20px #00ffaaaa;
+  transform: scale(1.05);
+}
+
+.printer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.printer-card {
+  background: #111;
+  border: 2px solid #00ffaa55;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 0 15px #00ffaa22, inset 0 0 10px #003322;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+.printer-card h3 a {
+  color: #00ffaa;
+  text-decoration: none;
+  font-size: 1.4rem;
+  text-shadow: 0 0 6px #00ffaaaa;
+}
+
+.printer-card h3 a:hover {
+  color: #66ffcc;
+  text-shadow: 0 0 12px #00ffaa;
+}
+
+.printer-card p {
+  font-size: 1rem;
+  margin: 0.5rem 0;
+  color: #cfcfcf;
+}
+
+.printer-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 20px #00ffaa66, inset 0 0 12px #004422;
+}
+
+/* ✨ Fade-in animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}

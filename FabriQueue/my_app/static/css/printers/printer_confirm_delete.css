@@ -1,0 +1,80 @@
+/* 🌌 FabriQueue Futuristic Theme – Delete Printer */
+
+body {
+  background: linear-gradient(135deg, #000, #001a00);
+  color: #e6fdf2;
+  font-family: "Orbitron", sans-serif;
+}
+
+.delete-container {
+  background: #111;
+  border: 2px solid #00ffaa55;
+  border-radius: 14px;
+  padding: 2rem;
+  max-width: 600px;
+  margin: 5rem auto;
+  text-align: center;
+  box-shadow: 0 0 25px #00ffaa44, inset 0 0 20px #001a00;
+  animation: fadeIn 0.6s ease-out;
+}
+
+.delete-container h2 {
+  font-size: 2rem;
+  color: #ff5555;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 10px #ff3333, 0 0 20px #aa0000;
+}
+
+.delete-container p {
+  margin: 1rem 0 2rem;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: #ddd;
+}
+
+/* --- Buttons --- */
+.delete-container .btn {
+  padding: 0.7rem 1.4rem;
+  margin: 0 0.5rem;
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 0 10px #000;
+}
+
+.delete-container .btn:hover {
+  transform: scale(1.05);
+}
+
+/* ⚠️ Red Danger Button */
+.danger-btn {
+  background: #900;
+  color: #fff;
+  box-shadow: 0 0 12px #ff000055;
+}
+
+.danger-btn:hover {
+  background: #c00;
+  box-shadow: 0 0 20px #ff000099;
+}
+
+/* 🟢 Cancel Button */
+.cancel-btn {
+  background: #222;
+  color: #eee;
+  box-shadow: 0 0 12px #00ffaa55;
+}
+
+.cancel-btn:hover {
+  background: #333;
+  color: #00ffaa;
+  box-shadow: 0 0 18px #00ffaa88;
+}
+
+/* ✨ Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}

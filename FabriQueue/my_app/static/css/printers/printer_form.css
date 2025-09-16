@@ -1,0 +1,100 @@
+/* 🌌 FabriQueue Futuristic Theme – Printer Form */
+
+body {
+  background: radial-gradient(circle at top left, #001100, #000 70%);
+  color: #e6fdf2;
+  font-family: "Orbitron", sans-serif;
+  padding: 2rem;
+}
+
+.form-container {
+  background: #111;
+  border: 2px solid #00ffaa55;
+  border-radius: 12px;
+  padding: 2rem;
+  max-width: 500px;
+  margin: 3rem auto;
+  box-shadow: 0 0 20px #00ffaa33, inset 0 0 15px #002211;
+  animation: fadeIn 0.7s ease-in-out;
+}
+
+.form-container h2 {
+  color: #00ffaa;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 0 8px #00ffaa, 0 0 15px #008855;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+form label {
+  font-size: 0.95rem;
+  font-weight: bold;
+  color: #aaffdd;
+  text-shadow: 0 0 6px #00ffaa44;
+}
+
+form input,
+form select,
+form textarea {
+  background: #000;
+  border: 1px solid #00ffaa88;
+  border-radius: 8px;
+  padding: 0.7rem;
+  color: #e6fdf2;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+form input:focus,
+form select:focus,
+form textarea:focus {
+  border: 1px solid #00ffaa;
+  box-shadow: 0 0 10px #00ffaa66;
+}
+
+.btn {
+  padding: 0.7rem 1.2rem;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.save-btn {
+  background: #00ffaa;
+  color: #000;
+  box-shadow: 0 0 12px #00ffaa88;
+}
+
+.save-btn:hover {
+  background: #00ffcc;
+  box-shadow: 0 0 18px #00ffaa;
+  transform: scale(1.05);
+}
+
+.cancel-btn {
+  background: #333;
+  color: #eee;
+  text-decoration: none;
+  box-shadow: 0 0 8px #444;
+  display: inline-block;
+}
+
+.cancel-btn:hover {
+  background: #222;
+  color: #00ffaa;
+  box-shadow: 0 0 12px #00ffaa55;
+}
+
+/* ✨ Fade-in animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
