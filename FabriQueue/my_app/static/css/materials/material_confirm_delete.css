@@ -1,0 +1,81 @@
+/* 🌌 FabriQueue Futuristic Theme – Material Delete Confirmation */
+
+body {
+  background: radial-gradient(circle at top left, #000, #001a00 80%);
+  color: #e6fdf2;
+  font-family: "Orbitron", sans-serif;
+}
+
+.delete-container {
+  max-width: 600px;
+  margin: 5rem auto;
+  padding: 2.5rem;
+  background: #111;
+  border: 2px solid #00ffaa55;
+  border-radius: 14px;
+  box-shadow: 0 0 25px #00ffaa33, inset 0 0 15px #003322;
+  animation: pulseGlow 2s infinite alternate;
+  text-align: center;
+}
+
+.delete-container h2 {
+  font-size: 2rem;
+  color: #ff0044;
+  text-shadow: 0 0 10px #ff0044cc, 0 0 25px #660000;
+  margin-bottom: 1.5rem;
+}
+
+.delete-container p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.delete-container strong {
+  color: #00ffaa;
+  text-shadow: 0 0 6px #00ffaa99;
+}
+
+/* Buttons */
+.btn {
+  padding: 0.7rem 1.4rem;
+  margin: 0.6rem;
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Danger button */
+.danger-btn {
+  background: #220000;
+  border: 2px solid #ff0044;
+  color: #ff0044;
+  box-shadow: 0 0 12px #ff004455;
+}
+
+.danger-btn:hover {
+  background: #ff0044;
+  color: #fff;
+  box-shadow: 0 0 30px #ff0044cc;
+}
+
+/* Cancel button */
+.cancel-btn {
+  background: transparent;
+  border: 2px solid #888;
+  color: #bbb;
+}
+
+.cancel-btn:hover {
+  background: #00ffaa22;
+  border-color: #00ffaa;
+  color: #00ffaa;
+  box-shadow: 0 0 20px #00ffaa77;
+}
+
+/* Glow Animation */
+@keyframes pulseGlow {
+  from { box-shadow: 0 0 15px #00ffaa22, inset 0 0 10px #003322; }
+  to   { box-shadow: 0 0 30px #00ffaa55, inset 0 0 20px #005533; }
+}

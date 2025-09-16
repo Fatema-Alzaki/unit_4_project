@@ -1,0 +1,105 @@
+/* 🌌 FabriQueue Futuristic Theme – Material Form */
+
+body {
+  background: linear-gradient(135deg, #000, #001a00);
+  color: #e6fdf2;
+  font-family: "Orbitron", sans-serif;
+}
+
+.form-container {
+  max-width: 600px;
+  margin: 3rem auto;
+  background: #111;
+  border: 2px solid #00ffaa55;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 0 20px #003322 inset, 0 0 20px #00ffaa33;
+  animation: fadeIn 0.6s ease;
+}
+
+.form-container h2 {
+  text-align: center;
+  color: #00ffaa;
+  text-shadow: 0 0 12px #00ffaa99, 0 0 20px #007755;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+}
+
+/* --- Form Fields --- */
+form p {
+  margin-bottom: 1rem;
+}
+
+form label {
+  display: block;
+  font-weight: bold;
+  color: #00ffaa;
+  margin-bottom: 0.3rem;
+}
+
+form input[type="text"],
+form input[type="number"],
+form select {
+  width: 100%;
+  padding: 0.6rem;
+  border: 2px solid #00ffaa55;
+  border-radius: 8px;
+  background: #000;
+  color: #e6fdf2;
+  font-size: 1rem;
+  box-shadow: 0 0 8px #00ffaa33 inset;
+  transition: all 0.3s ease;
+}
+
+form input:focus,
+form select:focus {
+  outline: none;
+  border-color: #00ffaa;
+  box-shadow: 0 0 12px #00ffaa88, 0 0 20px #00ffaa44 inset;
+}
+
+/* --- Buttons --- */
+.btn {
+  display: inline-block;
+  margin: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Save button */
+.save-btn {
+  background: #00ffaa22;
+  border: 2px solid #00ffaa;
+  color: #00ffaa;
+  box-shadow: 0 0 12px #00ffaa55;
+}
+
+.save-btn:hover {
+  background: #00ffaa;
+  color: #000;
+  box-shadow: 0 0 20px #00ffaa, 0 0 30px #00ffaa99;
+}
+
+/* Cancel button */
+.cancel-btn {
+  background: transparent;
+  border: 2px solid #ff0044;
+  color: #ff0044;
+  box-shadow: 0 0 10px #ff004455;
+}
+
+.cancel-btn:hover {
+  background: #ff0044;
+  color: #fff;
+  box-shadow: 0 0 20px #ff0044aa, 0 0 30px #ff557799;
+}
+
+/* ✨ Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
