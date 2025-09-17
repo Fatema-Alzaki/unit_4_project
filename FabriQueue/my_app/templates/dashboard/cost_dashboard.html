@@ -2,9 +2,17 @@
 {% load static %}
 
 {% block title %}Cost Dashboard{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+{% endblock %}
+
 {% block content %}
-  <h2>💰 Material Cost Breakdown</h2>
-  <canvas id="costChart" width="400" height="400"></canvas>
+  <section class="dashboard-container">
+    <h2>💰 Material Cost Breakdown</h2>
+    <div class="chart-wrapper">
+    <canvas id="costChart" width="250" height="250"></canvas>
+    </div>
+  </section>
 
   <script>
     const ctx = document.getElementById('costChart').getContext('2d');
@@ -16,19 +24,28 @@
           label: "Material Costs ($)",
           data: {{ costs|safe }},
           backgroundColor: [
-            '#00ff99', '#0099ff', '#ffcc00', '#ff3b3b', '#9933ff'
+            'rgba(0, 255, 153, 0.8)', 
+            'rgba(0, 153, 255, 0.8)', 
+            'rgba(255, 204, 0, 0.8)', 
+            'rgba(255, 59, 59, 0.8)', 
+            'rgba(153, 51, 255, 0.8)'
           ],
-          borderColor: '#111',
-          borderWidth: 2
+          borderColor: '#0f0',
+          borderWidth: 2,
+          hoverOffset: 15
         }]
       },
-      options: {
+        options: {
+        maintainAspectRatio: false,
         plugins: {
-          legend: {
-            labels: { color: "#e0ffe0" }
-          }
+            legend: {
+            labels: {
+                color: "#e0ffe0",
+                font: { size: 14, weight: "bold" }
+            }
+            }
         }
-      }
+        }
     });
   </script>
 {% endblock %}
