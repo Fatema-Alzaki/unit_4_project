@@ -1,20 +1,20 @@
 databases:
-  - name: FabriQueuedb
+  - name: fabriqueuedb
     plan: free
-    databaseName: FabriQueue
-    user: FabriQueue
+    databaseName: fabriqueue
+    user: fabriqueue
 
 services:
   - type: web
     plan: free
-    name: FabriQueue
+    name: fabriqueue
     runtime: python
     buildCommand: './build.sh'
     startCommand: 'python -m gunicorn FabriQueue.asgi:application -k uvicorn.workers.UvicornWorker'
     envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name: FabriQueuedb
+          name: fabriqueuedb
           property: connectionString
       - key: SECRET_KEY
         generateValue: true
