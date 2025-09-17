@@ -6,7 +6,7 @@ from django.contrib.auth.views import LoginView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
-
+from django.db.models import Sum
 
 # Home page
 def home(request):
@@ -191,3 +191,22 @@ class PrintHistoryDetail(DetailView):
     model = PrintHistory
     template_name = "history/history_detail.html"
     context_object_name = "history"
+
+
+def cost_dashboard(request):
+    # Aggregate cost per material
+    materials = Material.objects.all()
+    labels = []
+    costs = []
+    for material in materials:
+        total_cost = PrintJob.objects.filter(material=material).aggregate(
+            total=Sum("weight_grams")
+        )["total"]
+        if total_cost:
+            labels.append(material.name)
+            costs.append(float(total_cost) * float(material.cost_per_gram))
+
+    return render(request, "dashboard/cost_dashboard.html", {
+        "labels": labels,
+        "costs": costs
+    })

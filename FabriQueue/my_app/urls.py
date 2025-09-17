@@ -35,6 +35,8 @@ urlpatterns = [
 
     # About page
     path('about/', views.about, name='about'),
-
+ 
+    # Dashboard
+    path("dashboard/costs/", views.cost_dashboard, name="cost-dashboard"),
 
 ]
