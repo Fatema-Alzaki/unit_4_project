@@ -14,18 +14,27 @@
 
   <section class="printjob-grid">
     {% for job in object_list %}
-      <div class="printjob-card">
-        <h3>
-          <a href="{% url 'printjob-detail' job.pk %}">{{ job.name }}</a>
-        </h3>
-        <p><strong>Status:</strong> {{ job.get_status_display }}</p>
-        <p><strong>Material:</strong> {{ job.material }}</p>
-        <p><strong>Weight:</strong> {{ job.weight_grams }} g</p>
-        <p><strong>Est. Time:</strong> {{ job.estimated_time }}</p>
-        <p><strong>Submitted by:</strong> {{ job.user.username }}</p>
+      <div class="printjob-card status-{{ job.status }}">
+        <div class="card-header">
+          <h3>
+            <a href="{% url 'printjob-detail' job.pk %}">{{ job.name }}</a>
+          </h3>
+          <span class="status-badge">{{ job.get_status_display }}</span>
+        </div>
+
+        <div class="card-body">
+          <p><strong>Material:</strong> {{ job.material }}</p>
+          <p><strong>Weight:</strong> {{ job.weight_grams }} g</p>
+          <p><strong>Est. Time:</strong> {{ job.estimated_time }}</p>
+          <p><strong>Submitted by:</strong> {{ job.user.username }}</p>
+        </div>
+
+        <div class="card-footer">
+          <a href="{% url 'printjob-detail' job.pk %}" class="btn view-btn">View</a>
+        </div>
       </div>
     {% empty %}
-      <p>No print jobs have been submitted yet.</p>
+      <p class="empty-msg">⚠️ No print jobs have been submitted yet.</p>
     {% endfor %}
   </section>
 {% endblock %}
