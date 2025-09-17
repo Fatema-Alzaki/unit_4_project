@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
-from .models import PrintJob, Material, Printer
+from .models import PrintJob, Material, Printer, PrintHistory
 from django.contrib.auth.views import LoginView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
@@ -56,13 +56,37 @@ class PrintJobCreate(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.user = self.request.user
-        return super().form_valid(form)
+        response = super().form_valid(form)
+        
+        # Create PrintHistory entries for each selected printer
+        for printer in form.instance.printers.all():
+            PrintHistory.objects.create(
+                print_job=form.instance,
+                printer=printer,
+                started_at=form.instance.created_at,
+                success=True  # default to True, update later if needed
+            )
+        return response
+
 
 
 class PrintJobUpdate(UpdateView):
     model = PrintJob
     fields = ['name', 'material', 'weight_grams', 'estimated_time', 'status']
     template_name = "printjobs/printjob_form.html"
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        
+        if form.instance.status in ['C', 'F']:  # Completed or Failed
+            for history in PrintHistory.objects.filter(print_job=form.instance):
+                from django.utils import timezone
+                history.finished_at = timezone.now()
+                history.success = (form.instance.status == 'C')
+                history.save()
+        
+        return response
+
 
 
 class PrintJobDelete(DeleteView):
@@ -119,7 +143,7 @@ class PrinterCreate(CreateView):
     model = Printer
     fields = ['name', 'location', 'status']
     template_name = "printers/printer_form.html"
-
+    success_url = '/printers/'
 
 class PrinterUpdate(UpdateView):
     model = Printer
@@ -131,3 +155,39 @@ class PrinterDelete(DeleteView):
     model = Printer
     template_name = "printers/printer_confirm_delete.html"
     success_url = '/printers/'
+
+
+from .models import PrintJob, Material, Printer, PrintHistory
+
+class PrintJobHistoryList(ListView):
+    model = PrintHistory
+    template_name = "history/history_list.html"
+    context_object_name = "histories"
+
+    def get_queryset(self):
+        return PrintHistory.objects.filter(print_job_id=self.kwargs['pk'])
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['printjob'] = PrintJob.objects.get(pk=self.kwargs['pk'])
+        return context
+
+
+class PrinterHistoryList(ListView):
+    model = PrintHistory
+    template_name = "history/history_list.html"
+    context_object_name = "histories"
+
+    def get_queryset(self):
+        return PrintHistory.objects.filter(printer_id=self.kwargs['pk'])
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['printer'] = Printer.objects.get(pk=self.kwargs['pk'])
+        return context
+    
+
+class PrintHistoryDetail(DetailView):
+    model = PrintHistory
+    template_name = "history/history_detail.html"
+    context_object_name = "history"

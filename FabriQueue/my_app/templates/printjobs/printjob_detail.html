@@ -32,9 +32,16 @@
     {% endif %}
 
     <div class="actions">
+      <p><a href="{% url 'printjob-history' printjob.id %}">View History</a></p>
       <a href="{% url 'printjob-update' object.pk %}" class="btn">Edit</a>
-      <a href="{% url 'printjob-delete' object.pk %}" class="btn danger">Delete</a>
+      <a href="{% url 'printjob-confirm-delete' object.pk %}" class="btn danger">Delete</a>
       <a href="{% url 'printjob-list' %}" class="btn secondary">Back</a>
     </div>
   </div>
 {% endblock %}
+
+
+
+
+
+

@@ -27,6 +27,7 @@
     </ul>
 
     <div class="actions">
+      <a href="{% url 'printer-history' printer.id %}">View History</a>
       <a href="{% url 'printer-update' object.pk %}" class="btn">Edit</a>
       <a href="{% url 'printer-confirm-delete' object.pk %}" class="btn danger">Delete</a>
       <a href="{% url 'printer-list' %}" class="btn secondary">Back</a>
